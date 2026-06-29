@@ -29,7 +29,7 @@ class EventDetailScreen extends StatelessWidget {
                   Hero(
                     tag: 'event-img-${event.id}',
                     child: Image.network(
-                      event.imageUrl,
+                      event.image,
                       fit: BoxFit.cover,
                       loadingBuilder: (_, child, progress) => progress == null
                           ? child
@@ -77,7 +77,7 @@ class EventDetailScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          event.name,
+                          event.eventName,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -129,7 +129,7 @@ class EventDetailScreen extends StatelessWidget {
                   _DetailRow(
                       icon: Icons.location_on,
                       label: 'Venue',
-                      value: event.venue),
+                      value: event.venueDetails),
                   _DetailRow(
                       icon: Icons.place,
                       label: 'Location',
@@ -161,7 +161,7 @@ class EventDetailScreen extends StatelessWidget {
                           .titleMedium
                           ?.copyWith(fontWeight: FontWeight.bold)),
                   const SizedBox(height: 12),
-                  ...event.schedule.map((item) => Padding(
+                  ...event.eventSchedule.map((item) => Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: Row(
                           children: [
@@ -193,12 +193,12 @@ class EventDetailScreen extends StatelessWidget {
                     height: 120,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      itemCount: event.gallery.length,
+                      itemCount: event.photoGallery.length,
                       separatorBuilder: (_, __) => const SizedBox(width: 10),
                       itemBuilder: (_, i) => ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.network(
-                          event.gallery[i],
+                          event.photoGallery[i],
                           width: 160,
                           height: 120,
                           fit: BoxFit.cover,
@@ -282,12 +282,12 @@ class EventDetailScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(width: 20),
-              Expanded(
+                  Expanded(
                 child: ElevatedButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text('Booking ${event.name}…'),
+                        content: Text('Booking ${event.eventName}…'),
                         backgroundColor:
                             Theme.of(context).colorScheme.primary,
                       ),

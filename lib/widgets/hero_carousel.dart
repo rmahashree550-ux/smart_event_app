@@ -4,7 +4,8 @@ import '../models/event.dart';
 import '../screens/event_detail_screen.dart';
 
 class HeroCarousel extends StatefulWidget {
-  const HeroCarousel({super.key});
+  final List<Event> featuredEvents;
+  const HeroCarousel({super.key, required this.featuredEvents});
 
   @override
   State<HeroCarousel> createState() => _HeroCarouselState();
@@ -14,11 +15,12 @@ class _HeroCarouselState extends State<HeroCarousel> {
   late PageController _pageController;
   int _currentPage = 0;
   Timer? _timer;
-  final List<Event> _featured = sampleEvents.take(4).toList();
+  late List<Event> _featured;
 
   @override
   void initState() {
     super.initState();
+    _featured = widget.featuredEvents;
     _pageController = PageController();
     _timer = Timer.periodic(const Duration(seconds: 4), (_) {
       final next = (_currentPage + 1) % _featured.length;
@@ -71,7 +73,7 @@ class _HeroCarouselState extends State<HeroCarousel> {
                         Hero(
                           tag: 'event-img-${event.id}',
                           child: Image.network(
-                            event.imageUrl,
+                            event.image,
                             fit: BoxFit.cover,
                             loadingBuilder: (_, child, progress) => progress == null
                                 ? child
@@ -116,7 +118,7 @@ class _HeroCarouselState extends State<HeroCarousel> {
                                         color: Colors.white, fontSize: 11)),
                               ),
                               const SizedBox(height: 6),
-                              Text(event.name,
+                              Text(event.eventName,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(

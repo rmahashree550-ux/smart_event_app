@@ -1,0 +1,89 @@
+[
+  {
+    "id": "1",
+    "eventName": "Chennai Tech Summit 2025",
+    "category": "Technology",
+    "organizer": "Chennai Tech Foundation",
+    "date": "Jul 15, 2025",
+    "time": "9:00 AM",
+    "location": "Chennai, Tamil Nadu",
+    "ticketPrice": 599.0,
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "shortDescription": "Join top tech leaders from Chennai for 3 days of innovation, AI, and cloud computing.",
+    "fullDescription": "The Chennai Tech Summit brings together over 2,000 technology professionals, entrepreneurs, and innovators for three days of keynotes, workshops, and networking. Explore the latest in AI, blockchain, and cloud computing.",
+    "venueDetails": "IIT Madras Research Park, Chennai",
+    "organizerInformation": "Chennai Tech Foundation is a non-profit driving tech innovation.",
+    "availableSeats": 320,
+    "eventSchedule": [
+      "09:00 - Opening Keynote",
+      "11:00 - AI Workshop",
+      "14:00 - Panel Discussion",
+      "17:00 - Networking"
+    ],
+    "photoGallery": [
+      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1591115765373-5207764f72e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    ],
+    "locationMap": "https://maps.google.com/?q=IIT+Madras+Research+Park"
+  },
+  {
+    "id": "2",
+    "eventName": "Madurai Music Festival",
+    "category": "Music",
+    "organizer": "Madurai Arts Foundation",
+    "date": "Aug 3, 2025",
+    "time": "4:00 PM",
+    "location": "Madurai, Tamil Nadu",
+    "ticketPrice": 0.0,
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "shortDescription": "A weekend of classical and folk music under the stars. 30+ artists, celebrating Tamil culture.",
+    "fullDescription": "Experience the best of Carnatic and folk music with 30+ artists performing across multiple stages near the Meenakshi Temple. This free festival celebrates the rich musical heritage of Madurai with food, art, and culture.",
+    "venueDetails": "Avaniyapuram Grounds, Madurai",
+    "organizerInformation": "Madurai Arts Foundation promotes local talent.",
+    "availableSeats": 999,
+    "eventSchedule": [
+      "16:00 - Gates Open",
+      "17:00 - Local Artists",
+      "19:00 - Headliner Set",
+      "22:00 - Finale"
+    ],
+    "photoGallery": [
+      "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    ],
+    "locationMap": "https://maps.google.com/?q=Avaniyapuram+Grounds"
+  },
+  {
+    "id": "3",
+    "eventName": "Coimbatore Marathon 2025",
+    "category": "Sports",
+    "organizer": "Coimbatore Sports Council",
+    "date": "Sep 21, 2025",
+    "time": "6:00 AM",
+    "location": "Coimbatore, Tamil Nadu",
+    "ticketPrice": 399.0,
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "shortDescription": "Run through the textile city streets with 10,000 runners. All levels welcome.",
+    "fullDescription": "The Coimbatore Marathon is one of South India's biggest marathons, taking runners through the heart of the textile city. All skill levels welcome with marathon, half-marathon, and 5K options.",
+    "venueDetails": "Racecourse Complex, Coimbatore",
+    "organizerInformation": "Coimbatore Sports Council promotes fitness.",
+    "availableSeats": 1500,
+    "eventSchedule": [
+      "05:00 - Registration",
+      "06:00 - Race Start",
+      "11:00 - Finish Line Ceremony",
+      "12:30 - Awards"
+    ],
+    "photoGallery": [
+      "https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+      "https://images.unsplash.com/photo-1513593771513-7b58b6c4af38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    ],
+    "locationMap": "https://maps.google.com/?q=Racecourse+Complex+Coimbatore"
+  }
+]

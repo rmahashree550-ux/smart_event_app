@@ -40,7 +40,7 @@ class _EventCardState extends State<EventCard>
   Widget _networkImage({required double width, required double height, BoxFit fit = BoxFit.cover}) {
     final scheme = Theme.of(context).colorScheme;
     return Image.network(
-      widget.event.imageUrl,
+      widget.event.image,
       width: width,
       height: height,
       fit: fit,
@@ -118,7 +118,7 @@ class _EventCardState extends State<EventCard>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(widget.event.name,
+                Text(widget.event.eventName,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
@@ -214,7 +214,7 @@ class _EventCardState extends State<EventCard>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: Text(widget.event.name,
+                      child: Text(widget.event.eventName,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(

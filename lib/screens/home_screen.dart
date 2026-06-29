@@ -16,9 +16,32 @@ class _HomeScreenState extends State<HomeScreen> {
   String _selectedCategory = 'All';
   String _searchQuery = '';
   final TextEditingController _searchController = TextEditingController();
+  
+  List<Event> _allEvents = [];
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    try {
+      final events = await Event.loadEvents();
+      setState(() {
+        _allEvents = events;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
 
   List<Event> get _filteredEvents {
-    return sampleEvents.where((event) {
+    return _allEvents.where((event) {
       bool matchesCategory;
       if (_selectedCategory == 'Free Events') {
         matchesCategory = event.ticketPrice == 0;
@@ -30,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }
       final q = _searchQuery.toLowerCase();
       final matchesSearch = q.isEmpty ||
-          event.name.toLowerCase().contains(q) ||
+          event.eventName.toLowerCase().contains(q) ||
           event.category.toLowerCase().contains(q) ||
           event.location.toLowerCase().contains(q) ||
           event.organizer.toLowerCase().contains(q);
@@ -87,7 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Search bar stuck below AppBar
             Container(
               color: scheme.primary,
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -117,20 +139,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-
             Expanded(
-              child: SingleChildScrollView(
+              child: _isLoading 
+                ? const Center(child: CircularProgressIndicator()) 
+                : SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Hero Carousel
-                    if (_searchQuery.isEmpty && _selectedCategory == 'All') ...[
+                    if (_searchQuery.isEmpty && _selectedCategory == 'All' && _allEvents.isNotEmpty) ...[
                       const SizedBox(height: 20),
-                      const HeroCarousel(),
+                      HeroCarousel(featuredEvents: _allEvents.take(4).toList()),
                       const SizedBox(height: 24),
                     ],
 
-                    // Category chips
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text('Browse by Category',
@@ -160,8 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 24),
 
-                    // Featured Events
-                    if (_searchQuery.isEmpty && _selectedCategory == 'All') ...[
+                    if (_searchQuery.isEmpty && _selectedCategory == 'All' && _allEvents.isNotEmpty) ...[
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Row(
@@ -185,11 +205,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 16),
                           scrollDirection: Axis.horizontal,
-                          itemCount: sampleEvents.take(4).length,
+                          itemCount: _allEvents.take(4).length,
                           separatorBuilder: (_, __) =>
                               const SizedBox(width: 14),
                           itemBuilder: (context, i) {
-                            final event = sampleEvents[i];
+                            final event = _allEvents[i];
                             return EventCard(
                               event: event,
                               isHorizontal: true,
@@ -201,7 +221,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 24),
                     ],
 
-                    // All / Filtered Events
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
