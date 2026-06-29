@@ -127,7 +127,7 @@ class _EventCardState extends State<EventCard>
                   Icon(Icons.calendar_today, size: 11, color: scheme.primary),
                   const SizedBox(width: 3),
                   Expanded(
-                    child: Text(widget.event.date,
+                    child: Text('${widget.event.date} • ${widget.event.time}',
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 11, color: scheme.onSurface.withValues(alpha: 0.6))),
                   ),
@@ -241,7 +241,7 @@ class _EventCardState extends State<EventCard>
                 Row(children: [
                   Icon(Icons.calendar_today, size: 12, color: scheme.primary),
                   const SizedBox(width: 4),
-                  Text(widget.event.date,
+                  Text('${widget.event.date} • ${widget.event.time}',
                       style: TextStyle(
                           fontSize: 11,
                           color: scheme.onSurface.withValues(alpha: 0.6))),

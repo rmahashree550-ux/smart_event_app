@@ -17,9 +17,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _login() {
     if (_formKey.currentState!.validate()) {
+      final email = _emailController.text.trim();
+      final name = email.split('@').first;
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
+        MaterialPageRoute(
+          builder: (_) => HomeScreen(
+            userName: name,
+            userEmail: email,
+          ),
+        ),
       );
     }
   }

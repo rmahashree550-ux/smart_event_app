@@ -138,6 +138,12 @@ class EventDetailScreen extends StatelessWidget {
                       icon: Icons.person,
                       label: 'Organizer',
                       value: event.organizer),
+                  if (event.organizerInformation.isNotEmpty) ...[
+                    const SizedBox(height: 8),
+                    Text(event.organizerInformation,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: scheme.onSurface.withValues(alpha: 0.7))),
+                  ],
                   const SizedBox(height: 20),
 
                   // ─── Full Description ────────────────────────────────

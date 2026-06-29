@@ -4,9 +4,17 @@ import '../widgets/event_card.dart';
 import '../widgets/category_chip.dart';
 import '../widgets/hero_carousel.dart';
 import 'event_detail_screen.dart';
+import 'profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final String userName;
+  final String userEmail;
+
+  const HomeScreen({
+    super.key,
+    this.userName = 'Guest User',
+    this.userEmail = 'guest@example.com',
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -104,7 +112,33 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {}),
           IconButton(
               icon: const Icon(Icons.person_outline, color: Colors.white),
-              onPressed: () {}),
+              onPressed: () {
+                showGeneralDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  barrierLabel: 'Dismiss',
+                  pageBuilder: (context, animation, secondaryAnimation) {
+                    return SafeArea(
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: kToolbarHeight - 40, right: 16),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: SizedBox(
+                              width: 300,
+                              child: ProfileScreen(
+                                userName: widget.userName,
+                                userEmail: widget.userEmail,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }),
         ],
       ),
       body: SafeArea(
@@ -193,7 +227,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     .titleMedium
                                     ?.copyWith(fontWeight: FontWeight.bold)),
                             TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    _selectedCategory = 'All';
+                                    _searchController.clear();
+                                    _searchQuery = '';
+                                  });
+                                },
                                 child: const Text('See All')),
                           ],
                         ),
